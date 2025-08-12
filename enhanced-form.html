@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Enhanced Form — Example</title>
+  
+</head>
+<body>
+  <header>
+    <h1>Enhanced Form</h1>
+    <div class="contact">Accessible form • using semantic HTML5 tags • filename: <code>enhanced-form.html</code></div>
+  </header>
+
+  <main>
+    <!-- Intro / semantic article -->
+    <article aria-labelledby="intro-heading">
+      <h2 id="intro-heading">What this page includes</h2>
+      <p>This page demonstrates structured content, semantic layout, HTML5 form features, validation attributes, and accessible markup.</p>
+
+      <ul>
+        <li>Lists (<code>&lt;ul&gt;</code>, <code>&lt;ol&gt;</code>) showing features</li>
+        <li>A sample data table summarizing recent submissions</li>
+        <li>Images & a video (media)</li>
+      </ul>
+    </article>
+
+    <!-- Media block -->
+    <section aria-labelledby="media-heading">
+      <h3 id="media-heading">Sample Media</h3>
+      <div class="media">
+        <!-- Placeholder image — replace with local file if needed -->
+        <figure style="max-width:400px;">
+          <img src="Peter sax.jpg" alt="Placeholder example image" width="150" height="200">
+          <figcaption>Figure 1: Peter Sax getting ready for Banana island gig.</figcaption>
+        </figure>
+
+        <!-- Video — if you want to test locally, place sample-video.mp4 next to the HTML file -->
+        <figure style="max-width:400px;">
+          <video controls width="400" aria-describedby="video-desc">
+            <source src="sample-video.mp4" type="video/mp4">
+            <!-- Fallback text -->
+            Your browser does not support the video element. Try using a modern browser.
+          </video>
+          <figcaption id="video-desc">short clip after a successful live in concert.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- The form -->
+    <section aria-labelledby="form-heading">
+      <h3 id="form-heading">Complete HTML5 Form</h3>
+
+      <form id="enhancedForm" action="#" method="post" autocomplete="on" novalidate>
+        <!-- Note: novalidate is present for this demo so we can explain — remove it to let browser show default validations.
+             For assignment, remove novalidate if you want the native HTML5 errors to appear automatically. -->
+
+        <!-- Basic identity group -->
+        <fieldset>
+          <legend>Personal Information</legend>
+
+          <label for="regId">Registration ID (readonly)</label>
+          <input id="regId" name="regId" type="text" value="REG-2025-001" readonly aria-readonly="true" autocomplete="off">
+
+          <label for="fullName">Full name <span aria-hidden="true">*</span></label>
+          <input id="fullName" name="name" type="text" placeholder="John Doe" required autocomplete="name">
+
+          <label for="email">Email address <span aria-hidden="true">*</span></label>
+          <input id="email" name="email" type="email" placeholder="you@example.com" required autocomplete="email">
+
+          <div class="two-col" style="margin-top:8px;">
+            <div>
+              <label for="phone">Phone (digits only)</label>
+              <!-- pattern enforces 7-15 digits, add title to show helper text in validation popup -->
+              <input id="phone" name="phone" type="tel" placeholder="+2348012345678" pattern="[\d\+\-\s]{7,20}" title="Enter phone number (digits, +, -) between 7 and 20 characters" autocomplete="tel">
+            </div>
+
+            <div>
+              <label for="birthdate">Date of birth</label>
+              <input id="birthdate" name="dob" type="date" min="1900-01-01" max="2025-08-11" autocomplete="bday">
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- Address group -->
+        <fieldset>
+          <legend>Address</legend>
+          <label for="street">Street address</label>
+          <input id="street" name="street-address" type="text" placeholder="123 Example St" autocomplete="street-address">
+
+          <label for="city">City</label>
+          <input id="city" name="city" type="text" placeholder="Lagos" autocomplete="address-level2">
+
+          <div class="two-col">
+            <div>
+              <label for="postal">Postal code</label>
+              <input id="postal" name="postal-code" type="text" placeholder="100001" autocomplete="postal-code" pattern="[A-Za-z0-9\s\-]{3,10}" title="Enter valid postal code">
+            </div>
+            <div>
+              <label for="country">Country</label>
+              <select id="country" name="country" required autocomplete="country">
+                <option value="">Select a country...</option>
+                <option value="NG">Nigeria</option>
+                <option value="CA">Canada</option>
+                <option value="US">United States</option>
+                <option value="GB">United Kingdom</option>
+              </select>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- Preferences group -->
+        <fieldset>
+          <legend>Preferences & Skills</legend>
+
+          <label for="role">Desired role</label>
+          <select id="role" name="role" required>
+            <option value="">Choose...</option>
+            <option value="data-entry">Data Entry</option>
+            <option value="office-assistant">Office Assistant</option>
+            <option value="customer-service">Customer Service</option>
+          </select>
+
+          <label for="experience">Years of relevant experience</label>
+          <input id="experience" name="experience" type="number" min="0" max="50" step="1" value="0" required>
+
+          <label for="skills">Key skills (comma-separated)</label>
+          <input id="skills" name="skills" type="text" placeholder="Excel, typing, data management" autocomplete="off">
+
+          <label for="portfolio">Portfolio / Linkedin (optional)</label>
+          <input id="portfolio" name="portfolio" type="url" placeholder="https://linkedin.com/in/yourname" autocomplete="url">
+        </fieldset>
+
+        <!-- Accessibility note and submit -->
+        <div class="hint" role="status" aria-live="polite">Fields marked with * are required. Use tab to navigate fields.</div>
+
+        <div class="actions">
+          <button type="submit">Submit application</button>
+          <button type="reset" style="margin-left:8px; background:#6c757d;">Reset</button>
+        </div>
+      </form>
+    </section>
+</body>
+</html>
